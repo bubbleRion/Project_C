@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const secretInfo = require("../private/process/protect.js")
-
+const session = require('express-session')
 const port = secretInfo.port
 
 // express 바디파서 사용
