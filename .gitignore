@@ -1,4 +1,7 @@
 /private
 /node_modules
+<<<<<<< HEAD
+=======
 
+>>>>>>> refs/remotes/origin/main
 package-lock.json
