@@ -11,8 +11,6 @@ app.use(express.urlencoded({extended : true}))
 
 // public경로 지정
 app.use(express.static(__dirname + "/css"));
-// 쿠키파서 사용
-app.use(cookieParser(secretInfo.cookie))
 // 세션 사용
 app.use(session(secretInfo.session))
 
