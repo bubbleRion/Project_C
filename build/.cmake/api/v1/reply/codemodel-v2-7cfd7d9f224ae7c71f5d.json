@@ -28,12 +28,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/ghfjdhdl/Desktop/Project_C/build",
-		"source" : "/home/ghfjdhdl/Desktop/Project_C"
+		"build" : "/Users/bagjaehyeong/Desktop/flare/Project_C/build",
+		"source" : "/Users/bagjaehyeong/Desktop/flare/Project_C"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 3
+		"minor" : 7
 	}
 }
