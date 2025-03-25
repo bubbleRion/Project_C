@@ -2,5 +2,5 @@
 
 int main()
 {
-    printf("branch test"); // 123456789
+    printf("branch test"); // 1234
 }
