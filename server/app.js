@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 9000
+const port = 8090
 
 app.get('/', (req, res) => {
     res.send('hello , 어진 , 해준 , 재윤');
