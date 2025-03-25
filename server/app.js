@@ -3,7 +3,7 @@ const app = express()
 const port = 8090 // wpqkf
 
 app.get('/', (req, res) => {
-    res.send('hello , 어진 , 해준 , 재윤');
+    res.send('석준아 나가라');
 })
 
 app.listen(port, () => {
