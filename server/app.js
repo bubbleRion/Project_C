@@ -17,11 +17,14 @@ app.use(session(secretInfo.session))
 //페이지 가져오기
 const mainPage = require("./routes/index.js")
 const boardPage = require("./routes/board.js")
+const signUpPage = require("./routes/signup.js")
 
 
 // 페이지 경로 지정
 app.use("/", mainPage)
 app.use("/board" , boardPage)
+app.use("/signup", signUpPage)
+
 
 app.get('/cake', (req, res) => {
     res.send('석준아 옷에 뭐 묻었다야');
