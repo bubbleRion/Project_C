@@ -9,12 +9,12 @@
             "name": "PlatformIO",
             "includePath": [
                 "/home/hjpubuntu22045/Project_C/src",
-                "/home/hjpubuntu22045/Project_C/lib/libserialport",
-                "/home/hjpubuntu22045/Project_C/lib/config",
-                "/home/hjpubuntu22045/Project_C/lib/at25",
-                "/home/hjpubuntu22045/Project_C/lib/lcd",
-                "/home/hjpubuntu22045/Project_C/lib/sht20",
                 "/home/hjpubuntu22045/Project_C/lib/uart0",
+                "/home/hjpubuntu22045/Project_C/lib/lcd",
+                "/home/hjpubuntu22045/Project_C/lib/at25",
+                "/home/hjpubuntu22045/Project_C/lib/config",
+                "/home/hjpubuntu22045/Project_C/lib/libserialport",
+                "/home/hjpubuntu22045/Project_C/lib/sht20",
                 "/home/hjpubuntu22045/Project_C/lib/uart1",
                 ""
             ],
@@ -22,12 +22,12 @@
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
                     "/home/hjpubuntu22045/Project_C/src",
-                    "/home/hjpubuntu22045/Project_C/lib/libserialport",
-                    "/home/hjpubuntu22045/Project_C/lib/config",
-                    "/home/hjpubuntu22045/Project_C/lib/at25",
-                    "/home/hjpubuntu22045/Project_C/lib/lcd",
-                    "/home/hjpubuntu22045/Project_C/lib/sht20",
                     "/home/hjpubuntu22045/Project_C/lib/uart0",
+                    "/home/hjpubuntu22045/Project_C/lib/lcd",
+                    "/home/hjpubuntu22045/Project_C/lib/at25",
+                    "/home/hjpubuntu22045/Project_C/lib/config",
+                    "/home/hjpubuntu22045/Project_C/lib/libserialport",
+                    "/home/hjpubuntu22045/Project_C/lib/sht20",
                     "/home/hjpubuntu22045/Project_C/lib/uart1",
                     ""
                 ]
