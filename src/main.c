@@ -22,7 +22,7 @@ int main()
     {
         printf("포트를 열 수 없습니다: %s\n", sp_last_error_message());
         return 1;
-    }
+    } // test
 
     // 직렬 포트 설정 (예: 9600 baud, 8 비트, 짝수 패리티)
     sp_set_baudrate(port, 9600);
