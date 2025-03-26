@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "stdio.h": "c",
+    "linux_termios.h": "c",
+    "string.h": "c",
+    "libserialport.h": "c"
+  }
+}
