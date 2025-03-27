@@ -378,8 +378,8 @@ const template = {
                         <input type="text" name="name" placeholder="이름" class="text-name">
                         <input type="text" name="id" placeholder="아이디" class="text-id">
                         <input type="text" name="email" placeholder="이메일 주소" class="text-email">
-                        <input type="button" value="아이디 찾기" class="sbm">
-                        <input type="submit" value="섭밋" class="sbmRe">
+                        <input type="button" value="아이디 찾기" class="sbm" id="submit">
+                        <input type="submit" value="섭밋" class="sbmRe" id="submitRe">
                         <a href="/idFind">아이디 찾기 페이지</a>
                     </form>
                 </div>
