@@ -74,7 +74,7 @@ router.post("/", (req,res)=>{
                 sessionData[req.sessionID] = {id,password}
                 // 쿠키와 세션 보내주기
                 res.setHeader("Set-Cookie", `${req.sessionID}=${req.sessionID}; path=/`)
-                .cookie("connect_id", `${req.sessionID}`, {maxAge : 30 * 60 * 1000})
+                .cookie("connect_id", `${req.sessionID}`, {maxAge : 90 * 60 * 1000})
                 .redirect("/")
             }
         }
@@ -83,7 +83,7 @@ router.post("/", (req,res)=>{
             console.log("관리자입니다.")
             req.session.userID = userId
             req.session.save()
-            req.session.touch({maxAge : 30 * 60 * 1000})
+            req.session.touch({maxAge : 90 * 60 * 1000})
             res
             .setHeader("Set-Cookie", `${req.sessionID}=${req.sessionID}; path=/`)
             .cookie("connect_Admin", `${req.sessionID}`, { maxAge: 5000 })

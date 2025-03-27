@@ -356,6 +356,9 @@ const template = {
                 width: 700px;
                 height: 800px;
             }
+            .sbmRe{
+              display : none;
+            }
         </style>
         <title>비밀번호 찾기</title>
     </head>
@@ -375,12 +378,20 @@ const template = {
                         <input type="text" name="name" placeholder="이름" class="text-name">
                         <input type="text" name="id" placeholder="아이디" class="text-id">
                         <input type="text" name="email" placeholder="이메일 주소" class="text-email">
-                        <input type="submit" value="비밀번호 찾기" class="sbm">
+                        <input type="button" value="아이디 찾기" class="sbm">
+                        <input type="submit" value="섭밋" class="sbmRe">
                         <a href="/idFind">아이디 찾기 페이지</a>
                     </form>
                 </div>
             </main>
         </div>
+        <script>
+          const button = document.getElementById("submit")
+          const submit = document.getElementById("submitRe")
+          button.addEventListener("click" , ()=>{
+            submit.click()
+          })
+        </script>
     </body>
     </html>`
   },
