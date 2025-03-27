@@ -15,6 +15,7 @@
                 "/home/hjpubuntu22045/Project_C/lib/config",
                 "/home/hjpubuntu22045/Project_C/lib/libserialport",
                 "/home/hjpubuntu22045/Project_C/lib/sht20",
+                "/home/hjpubuntu22045/Project_C/lib/struct",
                 "/home/hjpubuntu22045/Project_C/lib/uart1",
                 ""
             ],
@@ -28,6 +29,7 @@
                     "/home/hjpubuntu22045/Project_C/lib/config",
                     "/home/hjpubuntu22045/Project_C/lib/libserialport",
                     "/home/hjpubuntu22045/Project_C/lib/sht20",
+                    "/home/hjpubuntu22045/Project_C/lib/struct",
                     "/home/hjpubuntu22045/Project_C/lib/uart1",
                     ""
                 ]
