@@ -8,7 +8,6 @@ const db = mysql.createConnection(conn);
 
 const secretInfo = require("../../private/process/protect.js");
 
-
 const crypto = require("crypto");
 const info = require("../template/Info.js")
 const salt = secretInfo.password.salt

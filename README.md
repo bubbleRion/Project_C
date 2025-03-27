@@ -44,13 +44,17 @@ sql 테이블 추가 또는 생성과 libserialport 사용방법 검색 및 공�
 #### 박어진
 test DB 생성 후 연결 테스트
 #### 박해준
-libserialport를 통한 test DB와의 연결 테스트
+timer와 interrupt 테스트 작업
 #### 이재윤
 프로젝트 방향성 검토 , 피드백 진행
 
 ### 목요일 오후
 
 #### 박재형
+디자인 이어서, html, css작업
 #### 박어진
+문서화를 위한 폴더 구조 텍스트화
 #### 박해준
+libserialport를 통한 test DB와의 연결 테스트
 #### 이재윤
+병원 방문

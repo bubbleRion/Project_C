@@ -68,7 +68,7 @@ router.post("/", (req,res)=>{
             // 세션 저장
             req.session.save()
             // 세션 시간 설정
-            req.session.touch({maxAge : 30 * 60 * 1000})
+            req.session.touch({maxAge : 90 * 60 * 1000})
             if(req.session){
                 // 객체에 id와 password 세션화 해서 넣어주기
                 sessionData[req.sessionID] = {id,password}

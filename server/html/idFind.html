@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            * {
+    margin: 0;
+    padding: 0;
+  }
+  /** 웹의 사이즈 지정 및 background에 2가지색을 그라데이션으로 삽입(linear-gradient)to right를 사용하여 #FFDAB9부터 오른쪽에서 진행*/
+  #root {
+    width: 100vw;
+    height: 100vh;
+    background-color: #FFDAB9;
+    box-sizing: border-box;
+  }
+  /** header에 크기지정 및 색 지정 rgba를 사용하여 투명도를 조절하였다.*/
+  #root > header{
+    width: inherit;
+    height: 7%;
+    background-color: rgba(210, 105, 30, 0.6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /** 사이트명 폰트 크기 지정 및 위치 지정*/
+  #root > header > .logo{
+    color: white;
+    font-size: 32px;
+    margin-left: 30px;
+    text-decoration: none;
+  }
+  /** flex-direction의 경우 축과 방향을 지정한다*/
+  #root > header > .sign{
+    display: flex;
+    flex-direction: row;
+  }
+  /** a 태그를 사용하여 하이퍼링크를 걸고 text-decoration으로 하단의 줄을 제거*/
+  #root > header > .sign > a{
+    margin-right: 20px;
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+  }
+  /** 로그인 버튼의 크기와 모양 flex를 이용한 위치 정렬*/
+  #root > header > .sign > a > div{
+    width: 100px;
+    height: 40px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+  }
+  /** 주요 내용이 들어갈 컨테이너, 크기와 flex로 정렬 방식을 바꾸었다*/
+  main{
+    width: inherit;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+            #root> main {
+                width: inherit;
+                height: 92vh;
+                display: flex;
+                
+            }
+            #root> main > div{
+                margin-top: 30%;
+                width: 50%;
+                height: 92vh;
+                
+            }
+            #root > main > .text-box > .form-box{
+                display: flex;
+                flex-direction: column;
+            }
+    
+            #root > main > .text-box > .form-box > .text-name{
+                background-color: transparent;
+                border: none;
+                border-bottom: 1px solid #CCC;
+                width: 100%;
+                height: 50px;
+                margin-top: 50px;
+                font-size: 24px;
+                
+            }
+    
+            #root > main > .text-box > .form-box > .text-email{
+                background-color: transparent;
+                border: none;
+                border-bottom: 1px solid #CCC;
+                width: 100%;
+                height: 50px;
+                margin-top: 50px;
+                font-size: 24px;
+            }
+    
+            #root > main > .text-box > .form-box > .sbm{
+                margin-top: 80px;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                height: 50px;
+                border: 1px solid #000;
+                border-radius: 50px;
+                background-color: #fff;
+                font-size: 20px;
+            }
+            #root > main > .text-box > .form-box > a{
+                all : unset;
+                margin-top: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 50px;
+                border: 1px solid #000;
+                border-radius: 50px;
+                background-color: #fff;
+                font-size: 20px;
+                text-decoration: none;
+            }
+            #root > main > .img-box > img{
+                width: 700px;
+                height: 800px;
+            }
+        </style>
+        <title>아이디 찾기</title>
+    </head>
+    <body>
+        <div id="root">
+            <header>
+                <a href="/" class="logo">Home</a>
+                <div class="sign">
+                    <a href="/login" class="sign-in"><div>로그인</div></a>
+                </div>
+            </header>
+            <main>
+                
+                <div class="text-box">
+                    <form action="/idFind" method="post" class="form-box">
+                        <input type="text" name="name" placeholder="이름" class="text-name">
+                        <input type="text" name="email" placeholder="이메일 주소" class="text-email">
+                        <input type="submit" value="아이디 찾기" class="sbm">
+                        <a href="/pwFind">비밀번호 찾기 페이지</a>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </body>
+    </html>
