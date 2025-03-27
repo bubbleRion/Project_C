@@ -109,6 +109,10 @@
     background-color: white;
     font-size: 20px;
     padding: 10px;
+    flex-direction: none;
+  }
+  #submitRe{
+    display: none;
   }
   </style>
   <title>회원가입</title>
@@ -134,7 +138,8 @@
           <input type="text" name="name" class="userInfo" placeholder="이름">
           <input type="text" name="phone" class="userInfo" placeholder="전화번호">
           <input type="text" name="email" class="userInfo" placeholder="이메일">
-          <input type="submit" id="submit" value="회원 가입">
+          <input type="button" id="submit" value="회원가입">
+          <input type="submit" id="submitRe" value="">
         </div>
       </form>
     </main>
