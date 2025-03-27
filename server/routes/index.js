@@ -1,7 +1,8 @@
-const express = require('express')
+const path = require("path")
+const express = require('express');
 const router = express.Router();
 
 router.get("/" , (req , res)=>{
-    res.send("3조 박재형 박어진 박해준 이재윤")
+    res.sendFile(path.join(__dirname  ,"../html" , "index.html"))
 })
 module.exports = router

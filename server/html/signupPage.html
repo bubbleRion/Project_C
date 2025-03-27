@@ -14,7 +14,8 @@
   #root {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to right, #FFDAB9, #ffffff);
+    background-color: #FFDAB9;
+    box-sizing: border-box;
   }
   /** header에 크기지정 및 색 지정 rgba를 사용하여 투명도를 조절하였다.*/
   #root > header{
@@ -42,6 +43,7 @@
     margin-right: 20px;
     text-decoration: none;
     color: #000;
+    font-size: 20px;
   }
   /** 로그인 버튼의 크기와 모양 flex를 이용한 위치 정렬*/
   #root > header > .sign > a > div{
@@ -67,7 +69,7 @@
   
   /** 작성할 텍스트들이 삽입될 signupText의 공간크기 할당 및 가운데로 위치지정을 위한 flex사용*/
   #signupTextSector {
-    margin-top: 10%;
+    padding-top: 10%;
     width: 100%;
     height: 100%;
     display: flex;
@@ -90,21 +92,26 @@
     height: 15%;
     border: 0;
     border-bottom: 1px solid black;
-    margin-bottom: 40px;
+    margin: 10% 0 0 0;
     font-size: 24px;
     background: none;
   }
   /** 작성한 내용들을 전송할 버튼*/
+  
+  /** 작성한 내용들을 전송할 버튼*/
   #submit{
     width: 50%;
-    height: 10%;
-    margin-top: 50px;
-    border-radius: 50px;
+    height: 40px;
+    margin-top: 15%;
+    margin-left: 25%;
+    border-radius: 40px;
+    border: 1px solid black;
     background-color: white;
-    font-size: 24px;
+    font-size: 20px;
+    padding: 10px;
   }
   </style>
-  <title>미래관 세탁기</title>
+  <title>회원가입</title>
 </head>
 <body>
   <div id="root">
@@ -121,11 +128,11 @@
       <form action="/signup" method="post" id="signupTextSector">
         <div id="signupText">
         <div class="dummy">회원가입</div>
-          <input type="text" name="id" class="userInfo" placeholder="아이디는 영어여야 합니다" style="ime-mode: disabled;">
+          <input type="text" name="id" class="userInfo" placeholder="아이디" style="ime-mode: disabled;">
           <input type="password" name="password" class="userInfo" placeholder="비밀번호">
+          <input type="text" name="roomNum" class="userInfo" placeholder="기숙사호실">
           <input type="text" name="name" class="userInfo" placeholder="이름">
           <input type="text" name="phone" class="userInfo" placeholder="전화번호">
-          <input type="text" name="address" class="userInfo" placeholder="주소">
           <input type="text" name="email" class="userInfo" placeholder="이메일">
           <input type="submit" id="submit" value="회원 가입"></input>
         </div>

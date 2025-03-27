@@ -2,12 +2,13 @@
 const express = require('express');
 const router = express.Router();
 // db 연결
-const conn = require("../process/db.js")
-const mysql = require("mysql");
+
+const conn = require("../../private/process/db.js")
+const mysql = require("mysql")
 const db = mysql.createConnection(conn);
-// info와 템플릿 연결
+
+const secretInfo = require("../../private/process/protect.js");
 const info = require("../template/Info.js")
-const secretInfo = require("../process/protect.js");
 // 비밀번호 감추기 시작
 const crypto = require("crypto");
 const path = require("path")
@@ -16,7 +17,7 @@ const sessionData = {}
 
 // 로그인 페이지 마크업 연결
 router.get("/", (req, res)=>{
-    res.sendFile(path.join(__dirname , "..", "html", "loginPage.html"))
+    res.sendFile(path.join(__dirname  ,"../html" , "loginPage.html"))
 })
 
 router.post("/", (req,res)=>{
