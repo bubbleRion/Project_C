@@ -109,7 +109,7 @@
     background-color: white;
     font-size: 20px;
     padding: 10px;
-    flex-direction: none;
+    text-decoration: none;
   }
   #submitRe{
     display: none;
@@ -144,5 +144,12 @@
       </form>
     </main>
   </div>
+  <script>
+    const button = document.getElementById("submit")
+    const submit = document.getElementById("submitRe")
+    button.addEventListener("click" , ()=>{
+      submit.click()
+    })
+  </script>
 </body>
 </html>
