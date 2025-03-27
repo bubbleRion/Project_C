@@ -53,8 +53,10 @@ timer와 interrupt 테스트 작업
 #### 박재형
 디자인 이어서, html, css작업
 #### 박어진
-문서화를 위한 폴더 구조 텍스트화
+문서화를 위한 폴더 구조 텍스트화 + sql 태이블 재수정
 #### 박해준
-libserialport를 통한 test DB와의 연결 테스트
+ATmega 인터럽트 코드 수정
+UART libserialport 통신 구현
+libserialport Mysql 테이블 연결 테스트
 #### 이재윤
-병원 방문
+병원 방문 + 웹 사이트 테스팅  및 오류 수정

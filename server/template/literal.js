@@ -232,14 +232,14 @@ const template = {
   #root {
     width: 100vw;
     height: 100vh;
-    background-color: #FFDAB9;
+    
     box-sizing: border-box;
   }
   /** header에 크기지정 및 색 지정 rgba를 사용하여 투명도를 조절하였다.*/
   #root > header{
     width: inherit;
     height: 7%;
-    background-color: rgba(210, 105, 30, 0.6);
+    background-color: #6ca0dc;
     display: flex;
     justify-content: space-between;
     align-items: center;
