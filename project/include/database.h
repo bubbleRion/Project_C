@@ -11,9 +11,9 @@
 
 void finish_with_error(MYSQL *con);
 MYSQL* connect_to_db();
-int add_user(MYSQL *con, int id, const char *dormitoryroom, const char *name, const char *password, const char *phonenumber, const char *email);
+int add_user(MYSQL *con, int id, const char *userid, const char *dormitoryroom, const char *name, const char *password, const char *phonenumber, const char *email);
 int get_user(MYSQL *con, int id);
-int update_user(MYSQL *con, int id, const char *dormitoryroom, const char *name, const char *password, const char *phonenumber, const char *email);
+int update_user(MYSQL *con, int id, const char *userid, const char *dormitoryroom, const char *name, const char *password, const char *phonenumber, const char *email);
 int delete_user(MYSQL *con, int id);
 
 #endif

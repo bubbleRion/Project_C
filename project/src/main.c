@@ -5,10 +5,12 @@
 
 void input_user_info(MYSQL *con) {
     int id;
+    char userid[51];
     char dormitoryroom[51];
     char name[51];
     char password[51];
     char phonenumber[51];
+    char email[51];
     char buffer[100];
 
     printf("\n");
@@ -19,31 +21,37 @@ void input_user_info(MYSQL *con) {
         id = atoi(buffer);
     }
     
+    printf("사용자 ID: ");
+    if (fgets(userid, sizeof(userid), stdin) != NULL) {
+        userid[strcspn(userid, "\n")] = 0;
+    }
+    
     printf("기숙사 호실: ");
     if (fgets(dormitoryroom, sizeof(dormitoryroom), stdin) != NULL) {
-        // 개행 문자 제거
         dormitoryroom[strcspn(dormitoryroom, "\n")] = 0;
     }
 
     printf("이름: ");
     if (fgets(name, sizeof(name), stdin) != NULL) {
-        // 개행 문자 제거
         name[strcspn(name, "\n")] = 0;
     }
     
     printf("비밀번호: ");
     if (fgets(password, sizeof(password), stdin) != NULL) {
-        // 개행 문자 제거
         password[strcspn(password, "\n")] = 0;
     }
     
     printf("전화번호: ");
     if (fgets(phonenumber, sizeof(phonenumber), stdin) != NULL) {
-        // 개행 문자 제거
         phonenumber[strcspn(phonenumber, "\n")] = 0;
     }
     
-    if (add_user(con, id, dormitoryroom, name, password, phonenumber)) {
+    printf("이메일: ");
+    if (fgets(email, sizeof(email), stdin) != NULL) {
+        email[strcspn(email, "\n")] = 0;
+    }
+    
+    if (add_user(con, id, userid, dormitoryroom, name, password, phonenumber, email)) {
         printf("\n사용자 정보가 성공적으로 추가되었습니다.\n");
     } else {
         printf("\n사용자 정보 추가에 실패했습니다.\n");
@@ -63,15 +71,20 @@ void search_user_info(MYSQL *con) {
 
 void update_user_info(MYSQL *con) {
     int id;
+    char userid[51];
     char dormitoryroom[51];
     char name[51];
     char password[51];
     char phonenumber[51];
-    char buffer[100];
+    char email[51];
     
     printf("수정할 사용자 ID: ");
     scanf("%d", &id);
     getchar();
+    
+    printf("\n새 사용자 ID: ");
+    fgets(userid, 50, stdin);
+    userid[strcspn(userid, "\n")] = 0;
     
     printf("\n기숙사 호실: ");
     fgets(dormitoryroom, 50, stdin);
@@ -88,7 +101,12 @@ void update_user_info(MYSQL *con) {
     printf("\n새 전화번호: ");
     fgets(phonenumber, 50, stdin);
     phonenumber[strcspn(phonenumber, "\n")] = 0;
-    if (update_user(con, id, dormitoryroom, name, password, phonenumber)) {
+    
+    printf("\n새 이메일: ");
+    fgets(email, 50, stdin);
+    email[strcspn(email, "\n")] = 0;
+    
+    if (update_user(con, id, userid, dormitoryroom, name, password, phonenumber, email)) {
         printf("사용자 정보가 성공적으로 수정되었습니다.\n");
     } else {
         printf("사용자 정보 수정에 실패했습니다.\n");

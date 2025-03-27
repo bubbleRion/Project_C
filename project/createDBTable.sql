@@ -4,10 +4,11 @@ GRANT ALL PRIVILEGES ON project.* TO 'bangme'@'localhost';
 USE project;
 
 CREATE TABLE User (
-id INT PRIMARY KEY,
-dormitoryroom VARCHAR(50) NOT NULL,
-name VARCHAR(50) NOT NULL,
-password VARCHAR(50) NOT NULL,
-phonenumber VARCHAR(50) UNIQUE NOT NULL,
-email VARCHAR(50) UNIQUE NOT NULL
+    id INT PRIMARY KEY,
+    userid VARCHAR(50) UNIQUE NOT NULL,
+    dormitoryroom VARCHAR(50) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    phonenumber VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(50) UNIQUE NOT NULL
 );
