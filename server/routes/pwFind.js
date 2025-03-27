@@ -22,22 +22,27 @@ router.get("/",  (req, res)=>{
 })
 
 router.post("/", (req,res)=>{
-    let newPW = 1234
-    let saltPw = "" + newPW * salt
-    let hashPassword = crypto.createHash(secretInfo.password.hash).update(saltPw).digest(secretInfo.password.digest)
-    db.query(`selct * from ${info.table.user}`, (err , results)=>{
-        if(err) console.error(err)
-        results.forEach(items =>{
-            if(items.id == req.body.id && items.email == req.body.email){
-                db.query(`UPDATE ${info.table.user} SET password= "${hashPassword}" WHERE id = "${req.body.id}"`, (err)=>{
-                    if(err) console.error(err)
-                })
-            }
-            else{
-                console.log("회원 정보가 일치하지 않습니다.")
-            }
+    if(db){
+        let newPW = 1234
+        let saltPw = "" + newPW * salt
+        let hashPassword = crypto.createHash(secretInfo.password.hash).update(saltPw).digest(secretInfo.password.digest)
+        db.query(`selct * from ${info.table.user}`, (err , results)=>{
+            if(err) console.error(err)
+            results.forEach(items =>{
+                if(items.id == req.body.id && items.email == req.body.email){
+                    db.query(`UPDATE ${info.table.user} SET password= "${hashPassword}" WHERE id = "${req.body.id}"`, (err)=>{
+                        if(err) console.error(err)
+                    })
+                }
+                else{
+                    console.log("회원 정보가 일치하지 않습니다.")
+                }
+            })
         })
-    })
-    res.redirect("/")
+        res.redirect("/")
+    }
+    else{
+        res.redirect("/")
+    }
 })
 module.exports = router

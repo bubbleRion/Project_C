@@ -357,7 +357,7 @@ const template = {
                 height: 800px;
             }
         </style>
-        <title>Document</title>
+        <title>비밀번호 찾기</title>
     </head>
     <body>
         <div id="root">
