@@ -11,12 +11,21 @@ volatile uint8_t startFlag = 0;
 // volatile uint8_t i;
 volatile uint8_t washingMachineNum;
 volatile uint8_t allowInterrupts = 0;
+volatile char received;
 
 ISR(TIMER1_OVF_vect);
 ISR(INT4_vect);
 ISR(INT5_vect);
 ISR(INT6_vect);
 ISR(INT7_vect);
+void uart0ReceiveHandler();
+ISR(USART0_RX_vect);
+
+ISR(USART0_RX_vect)
+{
+    received = UDR0;       // 수신된 데이터
+    uart0ReceiveHandler(); // 받은 데이터 처리
+}
 
 void init_timer();
 void washingStart();
@@ -49,13 +58,13 @@ int main(void)
     return 0;
 }
 
-void uart0ReceiveHandler(char received)
+void uart0ReceiveHandler()
 {
-    if (strcmp(received, "enable") == 0)
+    if (UDR0 == '1') // "1"을 받으면 인터럽트 활성화
     {
         allowInterrupts = 1; // 인터럽트 활성화
     }
-    else if (strcmp(received, "disable") == 0)
+    else // "0"을 받으면 인터럽트 비활성화
     {
         allowInterrupts = 0; // 인터럽트 비활성화
     }
@@ -95,7 +104,8 @@ void uart0ReceiveHandler(char received)
 
 ISR(INT4_vect)
 {
-    if (allowInterrupts) // ACCEPT_KEY가 1일 때만 동작
+    uart0ReceiveHandler();
+    if (allowInterrupts == 1) // ACCEPT_KEY가 1일 때만 동작
     {
         washingMachineFlag = 0x01;
         PORTC |= washingMachineFlag;
@@ -107,7 +117,8 @@ ISR(INT4_vect)
 
 ISR(INT5_vect)
 {
-    if (allowInterrupts) // ACCEPT_KEY가 1일 때만 동작
+    uart0ReceiveHandler();
+    if (allowInterrupts == 1) // ACCEPT_KEY가 1일 때만 동작
     {
         // 버튼 2가 눌리면 PORTC의 비트 1만 켬 (두 번째 LED)
         washingMachineFlag = 0x02; // 00000010
@@ -120,7 +131,8 @@ ISR(INT5_vect)
 
 ISR(INT6_vect)
 {
-    if (allowInterrupts) // ACCEPT_KEY가 1일 때만 동작
+    uart0ReceiveHandler();
+    if (allowInterrupts == 1) // ACCEPT_KEY가 1일 때만 동작
     {
         // 버튼 3이 눌리면 PORTC의 비트 2만 켬 (세 번째 LED)
         washingMachineFlag = 0x04; // 00000100
@@ -133,13 +145,15 @@ ISR(INT6_vect)
 
 ISR(INT7_vect)
 {
-    if (allowInterrupts) // ACCEPT_KEY가 1일 때만 동작
-    {
-        // 버튼 4가 눌리면 PORTC의 비트 3만 켬 (네 번째 LED)
-        washingMachineFlag = 0x08; // 00001000
-        PORTC |= washingMachineFlag;
-        washingMachineNum = 3;
-        // count[3] = 0;
-        uart0Transmit('4'); // 완료 메시지 전송
-    }
+    uart0ReceiveHandler();
+    // if (allowInterrupts == 1) // ACCEPT_KEY가 1일 때만 동작
+    // {
+    // 버튼 4가 눌리면 PORTC의 비트 3만 켬 (네 번째 LED)
+    washingMachineFlag = 0x08; // 00001000
+    PORTC |= washingMachineFlag;
+    washingMachineNum = 3;
+    // count[3] = 0;
+    uart0Transmit(UDR0);
+    uart0Transmit('4'); // 완료 메시지 전송
+    // }
 }

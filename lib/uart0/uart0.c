@@ -1,13 +1,17 @@
 #include <avr/io.h>
 
+#define F_CPU 16000000UL                   // ATmega128의 클럭 속도 (16MHz)
+#define BAUD 115200                        // 원하는 통신 속도
+#define MYUBRR ((F_CPU / (16 * BAUD)) - 1) // UBRR 계산
+
 void uart0Init(void)
 {
-    UCSR0A |= 0x00; // 2배속 모드
-    UCSR0B = 0x18;  // 0b00011000 Rx, Tx enable
-    UCSR0C = 0x16;  // 0b00010110  비동기, no Parity, 1 stop bit
+    UCSR0A |= 0x00;                                       // 2배속 모드
+    UCSR0B = (1 << RXCIE0) | (1 << RXEN0) | (1 << TXEN0); // 0x18;  // 0b00011000 Rx, Tx enable
+    UCSR0C = 0x16;                                        // 0b00010110  비동기, no Parity, 1 stop bit
 
-    UBRR0H = 0x00;
-    UBRR0L = 0x07; //  9600 bps
+    UBRR0H = (MYUBRR >> 8);
+    UBRR0L = MYUBRR; //  9600 bps
 }
 
 void uart0Transmit(char data)
@@ -23,6 +27,7 @@ unsigned char uart0Receive(void)
         ;
     return UDR0;
 }
+
 void uart0PrintString(char *str)
 {
     for (int i = 0; str[i]; ++i)
