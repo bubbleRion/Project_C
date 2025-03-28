@@ -9,5 +9,3 @@ add_executable(washer washer.c)
 
 target_include_directories(washer PRIVATE ${MYSQL_INCLUDE_DIR})
 target_link_libraries(washer PRIVATE ${MYSQL_LIBRARY})
-
-#sdf
