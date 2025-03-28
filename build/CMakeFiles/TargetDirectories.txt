@@ -1,2 +1,2 @@
-/Users/bagjaehyeong/Desktop/flare/Project_C/build/CMakeFiles/edit_cache.dir
-/Users/bagjaehyeong/Desktop/flare/Project_C/build/CMakeFiles/rebuild_cache.dir
+/home/bangme/Project_C/build/CMakeFiles/edit_cache.dir
+/home/bangme/Project_C/build/CMakeFiles/rebuild_cache.dir
