@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/washer.dir/washer.c.o -o washer  /usr/lib/x86_64-linux-gnu/libmysqlclient.so 
