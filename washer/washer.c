@@ -41,8 +41,7 @@ void display_all_washers(MYSQL *con) {
     
     mysql_free_result(result);
     
-    if (mysql_query(con, "SELECT w.id, w.waitingnumber, u.dormitoryroom, w.date, w.is_working, w.phonenumber "
-                    "FROM washer w LEFT JOIN project.User u ON w.user_id = u.id")) {
+    if (mysql_query(con, "SELECT id, waitingnumber, dormitoryroom, date, is_working, phonenumber FROM washer")) {
         finish_with_error(con);
     }
     
@@ -91,9 +90,8 @@ void change_washer_status(MYSQL *con, int washer_id, int is_working) {
 
 void add_new_washer(MYSQL *con, const char *waiting_number, const char *dorm_room, const char *phone_number, const char *date) {
     char query[1024];
-    int user_id = 0;
     
-    sprintf(query, "SELECT id FROM project.User WHERE dormitoryroom = '%s'", dorm_room);
+    sprintf(query, "SELECT dormitoryroom FROM project.User WHERE dormitoryroom = '%s'", dorm_room);
     
     if (mysql_query(con, query)) {
         printf("User 테이블 접근 중 오류 발생: %s\n", mysql_error(con));
@@ -104,24 +102,20 @@ void add_new_washer(MYSQL *con, const char *waiting_number, const char *dorm_roo
         if (result != NULL) {
             MYSQL_ROW row = mysql_fetch_row(result);
             
-            if (row != NULL) {
-                user_id = atoi(row[0]);
-                printf("기숙사 호실 %s의 사용자 ID: %d\n", dorm_room, user_id);
+            if (row == NULL) {
+                printf("해당 기숙사 호실(%s)이 User 테이블에 존재하지 않습니다.\n", dorm_room);
+                printf("먼저 User 테이블에 기숙사 호실을 등록해야 합니다.\n");
+                mysql_free_result(result);
+                return;
             }
             
             mysql_free_result(result);
         }
     }
     
-    if (user_id > 0) {
-        sprintf(query, "INSERT INTO washer(waitingnumber, dormitoryroom, phonenumber, date, is_working, user_id) "
-                      "VALUES('%s', '%s', '%s', '%s', 0, %d)",
-                waiting_number, dorm_room, phone_number, date, user_id);
-    } else {
-        sprintf(query, "INSERT INTO washer(waitingnumber, dormitoryroom, phonenumber, date, is_working) "
-                      "VALUES('%s', '%s', '%s', '%s', 0)",
-                waiting_number, dorm_room, phone_number, date);
-    }
+    sprintf(query, "INSERT INTO washer(waitingnumber, dormitoryroom, phonenumber, date, is_working) "
+                  "VALUES('%s', '%s', '%s', '%s', 0)",
+            waiting_number, dorm_room, phone_number, date);
     
     if (mysql_query(con, query)) {
         finish_with_error(con);
@@ -133,9 +127,9 @@ void add_new_washer(MYSQL *con, const char *waiting_number, const char *dorm_roo
 
 void check_dorm_washers(MYSQL *con, const char *dorm_room) {
     char query[1024];
-    sprintf(query, "SELECT w.id, w.waitingnumber, u.dormitoryroom, w.date, w.is_working, w.phonenumber "
-                  "FROM washer w LEFT JOIN project.User u ON w.user_id = u.id "
-                  "WHERE u.dormitoryroom = '%s'", dorm_room);
+    
+    sprintf(query, "SELECT id, waitingnumber, dormitoryroom, date, is_working, phonenumber "
+                  "FROM washer WHERE dormitoryroom = '%s'", dorm_room);
     
     if (mysql_query(con, query)) {
         finish_with_error(con);
@@ -148,8 +142,16 @@ void check_dorm_washers(MYSQL *con, const char *dorm_room) {
     }
     
     int num_fields = mysql_num_fields(result);
+    int count = mysql_num_rows(result);
     
-    printf("\n기숙사 호실 %s의 세탁기 상태:\n", dorm_room);
+    printf("\n기숙사 호실 %s의 세탁기 상태: %d개 찾음\n", dorm_room, count);
+    
+    if (count == 0) {
+        printf("해당 기숙사 호실의 세탁기가 없습니다.\n");
+        mysql_free_result(result);
+        return;
+    }
+    
     printf("ID | 대기번호 | 기숙사호실 | 날짜 | 작동상태 | 전화번호\n");
     printf("----------------------------------------------------------\n");
     
@@ -164,9 +166,9 @@ void check_dorm_washers(MYSQL *con, const char *dorm_room) {
         }
         printf("\n");
     }
+    
     mysql_free_result(result);
 }
-
 int main() {
     MYSQL *con = connect_to_database();
     int choice, washer_id, is_working;

@@ -17,8 +17,7 @@ CREATE TABLE IF NOT EXISTS washer (
     dormitoryroom VARCHAR(50) NULL,
     phonenumber VARCHAR(50) NULL,
     date DATE NOT NULL,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES project.User(id)
+    FOREIGN KEY (dormitoryroom) REFERENCES project.User(dormitoryroom)
 );
 
 -- test
@@ -35,4 +34,6 @@ CREATE TABLE IF NOT EXISTS washer (
 --SET is_working = 0
 --WHERE id = 1;
 
+use washer;
+drop table washer;
 
