@@ -35,3 +35,5 @@ CREATE TABLE washer (
 --UPDATE washer
 --SET is_working = 0
 --WHERE id = 1;
+
+--asdfasfdasdf
