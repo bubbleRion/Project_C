@@ -4,7 +4,7 @@ GRANT ALL PRIVILEGES ON project.* TO 'bangme'@'localhost';
 USE project;
 
 CREATE TABLE User (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     userid VARCHAR(50) UNIQUE NOT NULL,
     dormitoryroom VARCHAR(50) NOT NULL,
     name VARCHAR(50) NOT NULL,

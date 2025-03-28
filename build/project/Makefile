@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bangme/Project_C/build/CMakeFiles /home/bangme/Project_C/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /home/bangme/Project_C/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/bangme/Project_C/build/CMakeFiles /home/bangme/Project_C/build/project//CMakeFiles/progress.marks
+	cd /home/bangme/Project_C/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 project/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bangme/Project_C/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /home/bangme/Project_C/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 project/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,44 +103,80 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/bangme/Project_C/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 project/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/bangme/Project_C/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 project/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/bangme/Project_C/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named project
+# Convenience name for target.
+project/CMakeFiles/project.dir/rule:
+	cd /home/bangme/Project_C/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 project/CMakeFiles/project.dir/rule
+.PHONY : project/CMakeFiles/project.dir/rule
 
-# Build rule for target.
-project: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 project
+# Convenience name for target.
+project: project/CMakeFiles/project.dir/rule
 .PHONY : project
 
 # fast build rule for target.
 project/fast:
-	$(MAKE) $(MAKESILENT) -f project/CMakeFiles/project.dir/build.make project/CMakeFiles/project.dir/build
+	cd /home/bangme/Project_C/build && $(MAKE) $(MAKESILENT) -f project/CMakeFiles/project.dir/build.make project/CMakeFiles/project.dir/build
 .PHONY : project/fast
 
-#=============================================================================
-# Target rules for targets named washer
+src/database.o: src/database.c.o
+.PHONY : src/database.o
 
-# Build rule for target.
-washer: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 washer
-.PHONY : washer
+# target to build an object file
+src/database.c.o:
+	cd /home/bangme/Project_C/build && $(MAKE) $(MAKESILENT) -f project/CMakeFiles/project.dir/build.make project/CMakeFiles/project.dir/src/database.c.o
+.PHONY : src/database.c.o
 
-# fast build rule for target.
-washer/fast:
-	$(MAKE) $(MAKESILENT) -f washer/CMakeFiles/washer.dir/build.make washer/CMakeFiles/washer.dir/build
-.PHONY : washer/fast
+src/database.i: src/database.c.i
+.PHONY : src/database.i
+
+# target to preprocess a source file
+src/database.c.i:
+	cd /home/bangme/Project_C/build && $(MAKE) $(MAKESILENT) -f project/CMakeFiles/project.dir/build.make project/CMakeFiles/project.dir/src/database.c.i
+.PHONY : src/database.c.i
+
+src/database.s: src/database.c.s
+.PHONY : src/database.s
+
+# target to generate assembly for a file
+src/database.c.s:
+	cd /home/bangme/Project_C/build && $(MAKE) $(MAKESILENT) -f project/CMakeFiles/project.dir/build.make project/CMakeFiles/project.dir/src/database.c.s
+.PHONY : src/database.c.s
+
+src/main.o: src/main.c.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.c.o:
+	cd /home/bangme/Project_C/build && $(MAKE) $(MAKESILENT) -f project/CMakeFiles/project.dir/build.make project/CMakeFiles/project.dir/src/main.c.o
+.PHONY : src/main.c.o
+
+src/main.i: src/main.c.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.c.i:
+	cd /home/bangme/Project_C/build && $(MAKE) $(MAKESILENT) -f project/CMakeFiles/project.dir/build.make project/CMakeFiles/project.dir/src/main.c.i
+.PHONY : src/main.c.i
+
+src/main.s: src/main.c.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.c.s:
+	cd /home/bangme/Project_C/build && $(MAKE) $(MAKESILENT) -f project/CMakeFiles/project.dir/build.make project/CMakeFiles/project.dir/src/main.c.s
+.PHONY : src/main.c.s
 
 # Help Target
 help:
@@ -151,7 +187,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... project"
-	@echo "... washer"
+	@echo "... src/database.o"
+	@echo "... src/database.i"
+	@echo "... src/database.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 
@@ -163,6 +204,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/bangme/Project_C/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
