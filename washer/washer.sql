@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS project;
 USE project;
-CREATE TABLE project (
+CREATE TABLE User (
     id INT AUTO_INCREMENT PRIMARY KEY,
     dormitoryroom VARCHAR(50) UNIQUE NOT NULL
 );
@@ -10,16 +10,15 @@ GRANT ALL PRIVILEGES ON project.* TO 'bangme'@'localhost';
 CREATE DATABASE IF NOT EXISTS washer;
 USE washer;
 
--- WasherQueue 테이블 생성
-CREATE DATABASE IF NOT EXISTS washer;
-USE washer;
-CREATE TABLE washer (
+CREATE TABLE IF NOT EXISTS washer (
     id INT AUTO_INCREMENT PRIMARY KEY,
     is_working BOOLEAN DEFAULT 0 NOT NULL,
-    waintgnumber VARCHAR(50) NOT NULL,
-    dormitoryroom VARCHAR(50) NOT NULL,
+    waitingnumber VARCHAR(50) NOT NULL,
+    dormitoryroom VARCHAR(50) NULL,
+    phonenumber VARCHAR(50) NULL,
     date DATE NOT NULL,
-    FOREIGN KEY (dormitoryroom) REFERENCES project.project(dormitoryroom)
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES project.User(id)
 );
 
 -- test
@@ -35,4 +34,5 @@ CREATE TABLE washer (
 --UPDATE washer
 --SET is_working = 0
 --WHERE id = 1;
+
 
