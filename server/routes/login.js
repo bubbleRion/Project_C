@@ -2,16 +2,17 @@
 const express = require('express');
 const router = express.Router();
 // db 연결
-
 const conn = require("../../private/process/db.js")
 const mysql = require("mysql")
 const db = mysql.createConnection(conn);
 
 const secretInfo = require("../../private/process/protect.js");
 const info = require("../template/Info.js")
+const path = require("path")
+const {check , validationResult} = require("express-validator")
+const literal = require("../template/literal.js")
 // 비밀번호 감추기 시작
 const crypto = require("crypto");
-const path = require("path")
 // 세션 데이타 왜 빈 객체인지 사실 잘 모르겠어요
 const sessionData = {}
 
@@ -20,7 +21,22 @@ router.get("/", (req, res)=>{
     res.sendFile(path.join(__dirname  ,"../html" , "loginPage.html"))
 })
 
-router.post("/", (req,res)=>{
+router.post("/", [
+    // username은 이메일이어야 한다.
+    check('userId').isLength({min : 5 , max : 12}),
+    // 비밀번호는 5글자 이상이어야 한다.
+    check('password').isLength({ min: 4 , max : 12})
+  ], (req,res)=>{
+    // validate check
+    const errors = validationResult(req);
+    // 만약 errors가 비어있지 않다면 (errors에 err가 존재한다면)
+    if (!errors.isEmpty()) {
+    	// 첫 번째 에러를 firstError 변수에 할당
+        const firstError = errors.array()[0]
+        // firstError의 msg 프로퍼티를 json으로 보내줌
+        return res.status(400).json(firstError.msg);
+    }
+
     // 로그인 여부 체크
     let isLogin = false
     // 관리자 여부 체크
@@ -28,13 +44,13 @@ router.post("/", (req,res)=>{
     // 바디는?
     let body = req.body
     // 편하려고 바디에서 아이디 꺼냄
-    let id = body.id
+    let id = body.userId
     // 위와 동일하게 비번 꺼냄
     let password = body.password
     // 유저 아이디 빈값으로 받아옴 코드 자체가 의미 없는 거 같기도 합니다.
     let userId = info.data.userId
     // 비밀번호를 user테이블에서 찾아요. 기준은 프라이머리 키인 아이디
-    db.query(`select password from ${info.table.user} where id ="${id}"`, (err, results)=>{
+    db.query(`select password from ${info.table.user} where userid ="${id}"`, (err, results)=>{
         // 아이디 없을 때
         if(results[0] == undefined){
             console.log("아이디 틀림")
@@ -92,7 +108,7 @@ router.post("/", (req,res)=>{
         // 회원 , 관리자 아닐 경우
         else{
             console.log("로그인 실패")
-            res.redirect("/")
+            res.redirect("/login")
         }
     })
 })

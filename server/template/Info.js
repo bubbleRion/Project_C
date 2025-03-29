@@ -1,9 +1,9 @@
 const Info = {
     table : {
         lostBoard : "lostBoard8",
-        board : "mainboard10",
+        wash : "washer_status",
         comment : "comment",
-        user : "user_table"
+        user : "User"
     },
     data : {
         userId : null,

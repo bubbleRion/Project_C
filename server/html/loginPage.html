@@ -149,7 +149,7 @@
       <!--? 글과 이미지가 출력되는 위치 main테그안에 위치한다-->
       <form action="/login" method="post" id="loginTextSector">
         <div id="loginText">
-          <input type="text" name="id" class="userInfo" placeholder="아이디">
+          <input type="text" name="userId" class="userInfo" placeholder="아이디">
           <input type="password" name="password" class="userInfo" placeholder="비밀번호">
           <input type="button" id="submit" value="로그인">
           <input type="submit" id="submitRe" value="">
@@ -161,12 +161,6 @@
       </div>
     </main>
   </div>
-  <script>
-    const button = document.getElementById("submit")
-    const submit = document.getElementById("submitRe")
-    button.addEventListener("click" , ()=>{
-      submit.click()
-    })
-  </script>
+ 
 </body>
 </html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+  }
+  /** 웹의 사이즈 지정 및 background에 2가지색을 그라데이션으로 삽입(linear-gradient)to right를 사용하여 #FFDAB9부터 오른쪽에서 진행*/
+  #root {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+  /** header에 크기지정 및 색 지정 rgba를 사용하여 투명도를 조절하였다.*/
+  #root > header{
+    width: inherit;
+    height: 7%;
+    background-color: #6ca0dc;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /** 사이트명 폰트 크기 지정 및 위치 지정*/
+  #root > header > .logo{
+    color: white;
+    font-size: 32px;
+    margin-left: 30px;
+    text-decoration: none;
+  }
+  /** flex-direction의 경우 축과 방향을 지정한다*/
+  #root > header > .sign{
+    display: flex;
+    flex-direction: row;
+  }
+  /** a 태그를 사용하여 하이퍼링크를 걸고 text-decoration으로 하단의 줄을 제거*/
+  #root > header > .sign > a{
+    margin-right: 20px;
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+  }
+  /** 로그인 버튼의 크기와 모양 flex를 이용한 위치 정렬*/
+  #root > header > .sign > a > div{
+    width: 100px;
+    height: 40px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+  }
+  /** 주요 내용이 들어갈 컨테이너, 크기와 flex로 정렬 방식을 바꾸었다*/
+  main{
+    width: inherit;
+    height: inherit;
+    
+  }
+
+  .text{
+    margin-left: 20px;
+    width: inherit;
+    margin-top: 20%;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .text > div{
+    width: inherit;
+    padding: 20px;
+    
+  }
+  .wash{
+    font-size: 20px;
+    
+  }
+  .wash > div{
+    padding: 30px;
+    cursor: pointer;
+  }
+  .washText{
+    display: flex;
+    margin-left: 15%;
+    margin-bottom: 10%;
+  }
+  .washMachine{
+    width: 250px;
+    height: 350px;
+    background-color: #6ca0ff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .washMachine > div{
+    font-size: 16px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+  }
+  .btn{
+    display: block;
+    text-decoration: none;
+    color: #000;
+  }
+    </style>
+    <title>미래관 세탁실</title>
+</head>
+<body>
+    <div id="root">
+        <header>
+            <a href="/" class="logo">Home</a>
+            <div class="sign">
+                <a href="/logout" class="sign-in"><div>로그아웃</div></a>
+            </div>
+        </header>
+        <main>
+            <div class="text">
+                <div class="wash">
+                    <a href="/update1" id="wash1" class="btn">
+                        <div class="washText">세탁기1 : 사용가능</div>
+                        <div class="washMachine"><div>사용승인</div>
+                  </div>
+                </a>
+                </div>
+          </div>
+        </main>
+    </div>
+    
+</body>
+</html>
