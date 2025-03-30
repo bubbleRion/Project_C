@@ -341,45 +341,169 @@ const template = {
     </html>`
   },
   // 메인 페이지의 템플릿
-  indexTemp : (login) =>{
+  indexTemp : (is_switch) =>{
     return `<!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="mainPage.css">
-      <title>Document</title>
-    </head>
-    <body>
-      <div id="root">
+<html lang="ko">
+<head>
+    <meta http-equiv="Refresh" content="10">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+  }
+  /** 웹의 사이즈 지정 및 background에 2가지색을 그라데이션으로 삽입(linear-gradient)to right를 사용하여 #FFDAB9부터 오른쪽에서 진행*/
+  #root {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+  /** header에 크기지정 및 색 지정 rgba를 사용하여 투명도를 조절하였다.*/
+  #root > header{
+    width: inherit;
+    height: 7%;
+    background-color: #6ca0dc;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /** 사이트명 폰트 크기 지정 및 위치 지정*/
+  #root > header > .logo{
+    color: white;
+    font-size: 32px;
+    margin-left: 30px;
+    text-decoration: none;
+  }
+  /** flex-direction의 경우 축과 방향을 지정한다*/
+  #root > header > .sign{
+    display: flex;
+    flex-direction: row;
+  }
+  /** a 태그를 사용하여 하이퍼링크를 걸고 text-decoration으로 하단의 줄을 제거*/
+  #root > header > .sign > a{
+    margin-right: 20px;
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+  }
+  /** 로그인 버튼의 크기와 모양 flex를 이용한 위치 정렬*/
+  #root > header > .sign > a > div{
+    width: 100px;
+    height: 40px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+  }
+  /** 주요 내용이 들어갈 컨테이너, 크기와 flex로 정렬 방식을 바꾸었다*/
+  main{
+    width: inherit;
+    height: inherit;
+    
+  }
+
+  .text{
+    margin-left: 20px;
+    width: inherit;
+    margin-top: 20%;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .text > div{
+    width: inherit;
+    padding: 20px;
+    
+  }
+  .wash{
+    font-size: 20px;
+  }
+  .washText{
+    margin-left: 5%;
+  }
+  .wash > div{
+    padding: 30px;
+    cursor: pointer;
+  }
+  
+  .washMachine{
+    width: 80px;
+    height: 120px;
+    background-color: #6ca0ff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .washMachine > div{
+    font-size: 16px;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn{
+    display: block;
+    text-decoration: none;
+    color: #000;
+  }
+    </style>
+    <title>미래관 세탁실</title>
+</head>
+<body>
+    <div id="root">
         <header>
-          <a href="/" class="logo">Way Home</a>
-          <div class="sign">
-              ${login}
-              <a href="/signup" class="sign-up"><div>회원가입</div></a>
-          </div>
-      </header>
+            <a href="/" class="logo">Home</a>
+            <div class="sign">
+                <a href="/logout" class="sign-in"><div>로그아웃</div></a>
+            </div>
+        </header>
         <main>
-          <div id="pageSector">
-            <a href="/lostBoard" id="selectPage">
-              <img src="images/pngegg (3).png" alt="" id="mainImg">
-              <div id="abandonment">유기 동물</div>
-            </a>
-            <a href="/board" id="selectPage">
-              <img src="images/pngegg (3).png" alt="" id="mainImg">
-              <div id="missing">실종 동물</div>
-            </a>
-          </div>
-          <div id="introduce">
-            저희 사이트는 아프고 안타까운 동물들을 보호하고<br>
-            새로운 인연을 맺어주기 위해 만들어졌으며<br>
-            잃어버린 소중한 반려동물을 찾기위해 만들어졌습니다.<br>
+            <div class="text">
+                <div class="wash">
+                    <a href="index/1" id="wash1" class="btn">
+                        <div class="washText">세탁기1</div>
+                        <div class="washMachine"><div>${is_switch[0] == "1" ? "사용중" : "사용가능"}</div>
+                  </div>
+                </a>
+                </div>
+                <div class="wash">
+                  <a href="index/2" id="wash1" class="btn">
+                      <div class="washText">세탁기2</div>
+                      <div class="washMachine"><div>${is_switch[1] == "1" ? "사용중" : "사용가능"}</div>
+                </div>
+              </a>
+                </div>
+              </div>
+              <div class="text">
+                <div class="wash">
+                  <a href="index/3" id="wash1" class="btn">
+                      <div class="washText">세탁기3</div>
+                      <div class="washMachine"><div>${is_switch[2] == "1" ? "사용중" : "사용가능"}</div>
+                </div>
+              </a>
+              </div>
+              
+
+            <div class="wash">
+                <a href="index/4" id="wash1" class="btn">
+                    <div class="washText">세탁기4</div>
+                    <div class="washMachine"><div>${is_switch[3] == "1" ? "사용중" : "사용가능"}</div>
+                </div>
+              </a>
+            </div>
           </div>
         </main>
-      </div>
-    </body>
-    </html>`
+    </div>
+    
+</body>
+</html>`
   },
   
   
@@ -564,11 +688,11 @@ const template = {
     </body>
     </html>`
   },
-  washDetail : (id_pri , is_working , is_switch , is_timeout , domi , phone , id)=>{
+  washDetail : (id_pri , is_working , is_switch , domi , phone , id , time )=>{
    return `<!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta http-equiv="Refresh" content="30">
+    <meta http-equiv="Refresh" content="5">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -689,6 +813,11 @@ const template = {
       margin-top : 5%;
       margin-left: 2%;
     }
+    .time{
+      display: flex;
+      justify-content: center;
+      margin-right: 22%;
+    }
     </style>
     <title>미래관 세탁실</title>
 </head>
@@ -703,15 +832,16 @@ const template = {
         <main>
             <div class="text">
                 <div id ="hello" class="wash">
-                        <form action="${domi != null ? "/index" + id_pri : "/update1"}" method="${domi != null ? "get" : "post"}" id="loginTextSector">
-                          <div class="washText">${id_pri}번 세탁기 : ${is_switch == 1 ? "사용가능" : "사용불가"}</div>
+                        <form action="/update1" method="post" id="loginTextSector">
+                          <div class="washText">${id_pri}번 세탁기 : ${is_working == 0 ? "사용가능" : "사용중"}</div>
                           <div class="phone">${domi != null && is_switch == 1 ? "호실 :" + domi : ""}</div>
-                          <div class="phone">${phone != null && is_timeout == 1 ? "전화번호 :" + phone : ""}</div>
-                          <button class="washMachine"><div>${domi == null && is_switch == 1 ? "사용중" : is_working == 1 ? "승인완료" : "사용승인"}</button>
+                          <div class="phone">${time <= 0 && phone != null ? "전화번호 :" + phone : ""}</div>
+                          <button class="washMachine"><div>${is_working == 1 ? is_switch == 1 ? "동작중" : "승인완료" : "사용승인"}</button>
                           <input type="text" name="cake" class="hidden" value="${id_pri}"
                           <input type="text" name="caky" class="hidden" value="${id}"
                           <input type="submit" id="submitRe" value="">
-                          <div class="isWork">${is_working == 1 ? "세탁기 동작 버튼을 눌러주세요" : ""}</div>
+                          <div class="isWork">${ time > 0 ? is_switch == 0 ? "세탁기 동작 버튼을 눌러주세요." : "세탁기가 돌아가고 있습니다." : ""}</div>
+                          <div id="time" class="time">${is_switch == 0 ? "" :  time > 0 ? time + "분 뒤 세탁완료" : "세탁종료"}</div>
                         </form>
                   </div>
                 </a>
@@ -719,6 +849,7 @@ const template = {
           </div>
         </main>
     </div>
+  
 </body>
 </html>`
   },
@@ -879,8 +1010,8 @@ const template = {
   </script>
 </body>
 </html>`
-  }
+  },
   
-  }
+}
   
   module.exports = template

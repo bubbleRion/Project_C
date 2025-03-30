@@ -13,7 +13,7 @@ app.use(express.urlencoded({extended : true}))
 
 
 // public경로 지정
-app.use(express.static(__dirname + "/css"));
+app.use(express.static('server'))
 // 세션 사용
 app.use(session(secretInfo.session))
 
@@ -28,8 +28,6 @@ const logout = require("./routes/logout.js") //
 const washDetail = require("./routes/washDetail.js")
 
 const update1 = require("./routes/update1.js")
-const update3 = require("./routes/update3.js")
-const update4 = require("./routes/update4.js")
 
 // 페이지 경로 지정
 app.use("/", mainPage)
@@ -38,17 +36,9 @@ app.use("/login", loginPage)
 app.use("/idFind", idFind)
 app.use("/pwFind", pwFind)
 app.use("/logout", logout)
-
-app.use("/", washDetail)
-
+app.use("/index", washDetail)
 app.use("/update1", update1)
-app.use("/update3", update3)
-app.use("/update4", update4)
 
-
-app.get('/cake', (req, res) => {
-    res.send('석준아 옷에 뭐 묻었다야');
-})
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
